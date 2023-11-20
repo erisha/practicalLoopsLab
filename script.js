@@ -34,15 +34,50 @@ for (let n = 5; n <=50; n++ ){
     }
 }
 
-// first loop just goes over all our numbers (5-10), next we create a second for loop to then do some math, to see if our number is divisible. Its tricky because our i variable is dependent on our n variable
+//  loop just goes over all our numbers (5-10), 
+// next we create a second for loop to then do some math, to see if our number is divisible. Its tricky because our i variable is dependent on our n variable
 
 
 
 console.log('=====Part 3: Feeling Loopy====');
 
-const str = ['ID','Name','Occupation','Age\n42','Bruce','Knight','41\n57','Bob','Fry Cook','19\n63','Blaine','Quiz Master','58\n98','Bill','Doctor\’s Assistant','26']
+
+const csv = "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26"
+
+let currentCell = 1;
+let cell1 = "";
+let cell2 = "";
+let cell3 = "";
+let cell4 = "";
+
+// loop over string
+for (let i = 0; i < csv.length; i++) {
+    // console.log(csv[i]);
 
 
-for ( let i = 0; i < str.length; i++) {
-    console.log(str[i]);
-}
+    //store each cell in a variable
+    if (csv[i] === ","){
+        //if comma move to next cell
+        currentCell++
+
+    } else if (csv[i] === "\n"){
+        // if is a \n  move to next row
+
+        console.log(cell1, cell2, cell3, cell4);
+        currentCell = 1
+        cell1 = '';
+        cell2 = '';
+        cell3 = '';
+        cell4 = '';
+    } else {
+        if (currentCell === 1){
+            cell1 += csv[i];
+        }else if (currentCell === 2){
+            cell2 += csv[i];
+        }else if (currentCell === 3){
+            cell3 += csv[i];
+        }else if (currentCell === 4){
+            cell4 += csv[i];
+        }
+     }
+};
